@@ -1,0 +1,9 @@
+Instalar react expo:
+npm install -g expo-cli
+
+Inicializar un proyecto con expo:
+expo init nombreDelProyecto
+cd ./nombreDelProyecto/
+
+Arrancar proyecto:
+npm start
