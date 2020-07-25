@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 // rncsl + tab
 
 const styles = StyleSheet.create({
@@ -10,7 +10,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
+    bullet: {
+        padding: 5,
+        fontWeight: 'bold'
+    },
     text: {
+        flex: 1,
         padding: 5,
         fontWeight: 'bold'
     },
@@ -18,11 +23,21 @@ const styles = StyleSheet.create({
         color: '#aaa',
         textDecorationLine: 'line-through',
         fontWeight: 'normal'
+    },
+    delete: {
+        width: 44,
+        height: 44,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    deleteText: {
+        color: '#ff0000',
+        fontSize: 18
     }
 })
 
 const TodoList = ({
-    todos,
+    todos, onUpdate, onDelete
 }) => (
     <Fragment>
         {/*<Text>Tarea 1</Text>
@@ -38,10 +53,13 @@ const TodoList = ({
             Equivalente a
             todo.done ? null : <Text key={todo.text}>{todo.text}</Text>
             */
-            <View style={styles.listItem} key={todo.text}>
-                <Text style={styles.text}>-</Text>
+            <TouchableOpacity style={styles.listItem} key={todo.text} onPress={() => onUpdate({...todo, done: !todo.done})}>
+                <Text style={styles.bullet}>-</Text>
                 <Text style={[styles.text, todo.done && styles.textDone]}>{todo.text}</Text>
-            </View>
+                <TouchableOpacity style={styles.delete} onPress={() => onDelete(todo)}>
+                    <Text style={styles.deleteText}>X</Text>
+                </TouchableOpacity>
+            </TouchableOpacity>
         ))}
     </Fragment>
 );
