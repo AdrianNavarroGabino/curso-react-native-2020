@@ -14,7 +14,10 @@ class MainScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Hola mundo! - componente</Text>
+                <Text selectable>ToDo List App</Text>
+                <Text>Tarea 1</Text>
+                <Text>Tarea <Text>2</Text></Text>
+                <Text>Tarea 3</Text>
             </View>
         );
     }
