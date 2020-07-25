@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import {View, Text, StyleSheet} from "react-native";
+// He definido "name": "todoList" en package.json para definir el nombre de la carpeta raíz
+import TodoList from "todoList/src/components/TodoList";
 
 const styles = StyleSheet.create({
     container: {
@@ -23,21 +25,7 @@ class MainScreen extends Component {
             <View style={styles.container}>
                 <Text selectable>ToDo List App</Text>
 
-                {/*<Text>Tarea 1</Text>
-                <Text>Tarea <Text>2</Text></Text>
-                <Text>Tarea 3</Text>*/}
-
-                {/*<Text>{todos[0]}</Text>
-                <Text>{todos[1]}</Text>
-                <Text>{todos[2]}</Text>*/}
-
-                {todos.map(todo => (
-                    /*
-                    Equivalente a
-                    todo.done ? null : <Text key={todo.text}>{todo.text}</Text>
-                    */
-                    !todo.done && <Text key={todo.text}>{todo.text}</Text>
-                ))}
+                <TodoList todos={todos}/>
             </View>
         );
     }
