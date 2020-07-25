@@ -6,7 +6,7 @@ Pero, si el móvil no tiene notch, aparecera sobre la barra de notificaciones,
 por lo que, además de usar SafeAreaView, no estaría mal darle un marginTop de
 30 para que baje un poco y no quede mal en ningún caso.
 */
-import {SafeAreaView, View, Text, StyleSheet} from "react-native";
+import {SafeAreaView, View, Text, StyleSheet, TextInput} from "react-native";
 // He definido "name": "todoList" en package.json para definir el nombre de la carpeta raíz
 import TodoList from "todoList/src/components/TodoList";
 import {getTodos} from "todoList/src/data/todos";
@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
         fontSize: 20
+    },
+    text: {
+        width: '80%',
+        borderBottomWidth: 1,
+        fontSize: 20
     }
 });
 
@@ -32,7 +37,8 @@ class MainScreen extends Component {
         super(props);
 
         this.state = {
-            todos: []
+            todos: [],
+            newTodo: null
         };
     }
 
@@ -41,12 +47,29 @@ class MainScreen extends Component {
     }
 
     render() {
-        //const {todos} = this.state;
+        const {todos, newTodo} = this.state;
         return (
             <SafeAreaView style={styles.container}>
                 <Text selectable style={styles.title}>ToDo List App</Text>
 
-                <TodoList todos={this.state.todos}/>
+                <TextInput
+                    placeholder="Nuevo ToDo"
+                    value={newTodo}
+                    onChangeText={todo => this.setState({newTodo: todo})}
+                    style={styles.text}
+                    autoCapitalize="words"
+                    /*
+                    clearrButtonMode solo funciona en IOS
+                    Pone una X al final del input para borrarlo todo
+                    */
+                    clearButtonMode="always"
+                    /*
+                    returnKeyType solo funciona en IOS
+                    Cambia la tecla return por un tick en el teclado
+                    */
+                    returnKeyType="done"
+                />
+                <TodoList todos={todos}/>
             </SafeAreaView>
         );
     }
