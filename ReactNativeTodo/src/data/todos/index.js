@@ -4,7 +4,19 @@ const getTodos = () => [
     newTodo({text: "Tarea 1", done: false}),
     newTodo({text: "Tarea 2", done: false}),
     newTodo({text: "Tarea 3", done: false}),
-    newTodo({text: "Tarea 4", done: true})];
+    newTodo({text: "Tarea 4", done: false}),
+    newTodo({text: "Tarea 5", done: false}),
+    newTodo({text: "Tarea 6", done: false}),
+    newTodo({text: "Tarea 7", done: false}),
+    newTodo({text: "Tarea 8", done: false}),
+    newTodo({text: "Tarea 9", done: false}),
+    newTodo({text: "Tarea 10", done: false}),
+    newTodo({text: "Tarea 11", done: false}),
+    newTodo({text: "Tarea 12", done: false}),
+    newTodo({text: "Tarea 13", done: false}),
+    newTodo({text: "Tarea 14", done: false}),
+    newTodo({text: "Tarea 15", done: false}),
+    newTodo({text: "Tarea 16", done: true})];
     
 const newTodo = todo => ({
     id: Math.floor((1 + Math.random()) * 0x10000)

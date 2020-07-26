@@ -1,8 +1,11 @@
 import React, {Fragment} from 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 // rncsl + tab
 
 const styles = StyleSheet.create({
+    container: {
+        width: '100%'
+    },
     listItem: {
         borderWidth: 1,
         margin: 5,
@@ -39,7 +42,9 @@ const styles = StyleSheet.create({
 const TodoList = ({
     todos, onUpdate, onDelete
 }) => (
-    <Fragment>
+    // Un ScrollView va a renderizar todos los elementos de la lista
+    // Por eso no se deben utilizar para listas, sino para elementos en pantalla
+    <ScrollView contentContainerStyle={styles.container}>
         {/*<Text>Tarea 1</Text>
         <Text>Tarea <Text>2</Text></Text>
         <Text>Tarea 3</Text>*/}
@@ -61,7 +66,7 @@ const TodoList = ({
                 </TouchableOpacity>
             </TouchableOpacity>
         ))}
-    </Fragment>
+    </ScrollView>
 );
 
 export default TodoList;
